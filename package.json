@@ -1,0 +1,11 @@
+{
+  "name": "up-saas-platform",
+  "version": "1.0.0",
+  "description": "UP! is a SaaS platform",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "Sean McCullough",
+  "license": "ISC"
+}
