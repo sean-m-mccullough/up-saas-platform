@@ -54,6 +54,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.col-60-40 {
+  grid-template-columns: 60% 40%;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
