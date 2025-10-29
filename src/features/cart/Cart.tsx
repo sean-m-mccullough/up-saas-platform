@@ -13,13 +13,16 @@ function Cart() {
     const { 
         freeBasicChecks, 
         freeAdvancedChecks, 
-        freeStatusPages 
+        freeStatusPages,
+        discounts
     } = useRebates();
 
     const itemsArray = Object.values(cartItems);
-    const total = Object.values(cartItems).reduce((sum, item) => {
+    const subtotal = Object.values(cartItems).reduce((sum, item) => {
         return sum + item.cost * item.quantity;
     }, 0);
+
+    const finalTotal = Math.max(0, subtotal - discounts.total);
 
     return (
         <Box sx={{ padding: 2, border: '1px solid #ccc', borderRadius: 2, width: '100%' }}>
@@ -38,7 +41,7 @@ function Cart() {
                 )}
             </div>
 
-            {(freeAdvancedChecks > 0 || freeStatusPages > 0 || freeBasicChecks > 0) && (
+            {discounts.total > 0 && (
                 <Box sx={{ 
                     backgroundColor: 'grey.50', 
                     borderRadius: 1, 
@@ -49,23 +52,26 @@ function Cart() {
                     borderColor: 'grey.200'
                 }}>
                     <Typography variant="h6" component="h3" gutterBottom color="text.primary">
-                        Rebates
+                        Rebate(s) Applied:
                     </Typography>
                     {freeAdvancedChecks > 0 && (
-                        <Typography variant="body2" color="success.main" sx={{ mb: 0.5 }}>
-                            + {freeAdvancedChecks} Advanced Check(s) (free)
+                        <Typography variant="body2" color="success.dark" sx={{ mb: 0.5 }}>
+                            - ${discounts.advancedCheck.toFixed(2)} ({freeAdvancedChecks} Advanced Check discount)
                         </Typography>
                     )}
                     {freeStatusPages > 0 && (
-                        <Typography variant="body2" color="success.main" sx={{ mb: 0.5 }}>
-                            + {freeStatusPages} Status Page(s) (free)
+                        <Typography variant="body2" color="success.dark" sx={{ mb: 0.5 }}>
+                            - ${discounts.statusPage.toFixed(2)} ({freeStatusPages} Status Page discount)
                         </Typography>
                     )}
                     {freeBasicChecks > 0 && (
-                        <Typography variant="body2" color="success.main">
-                            + {freeBasicChecks} Basic Check(s) (free)
+                        <Typography variant="body2" color="success.dark">
+                            - ${discounts.basicCheck.toFixed(2)} ({freeBasicChecks} Basic Check discount)
                         </Typography>
                     )}
+                    <Typography variant="h6" sx={{ mt: 1, fontWeight: 'bold' }} color="success.dark">
+                        Total Discount: -${discounts.total.toFixed(2)}
+                    </Typography>
                 </Box>
             )}
 
@@ -80,7 +86,7 @@ function Cart() {
                         borderColor: 'primary.main'
                     }}>
                         <Typography variant="h5" component="h3" color="primary.contrastText" sx={{ fontWeight: 'bold' }}>
-                            Cart Total: ${total.toFixed(2)}
+                            Total: ${finalTotal.toFixed(2)}
                         </Typography>
                     </Box>
                 )

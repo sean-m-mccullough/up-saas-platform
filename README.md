@@ -36,6 +36,19 @@ I've found I work best using a Pomodoro timing around 30 minutes upto 1hr then b
 * created rebates
 * built out cart feature
 
-### 35 mins
+### 45 mins
 * added styling using MUI
+* realized I misunderstood an AC
+
+The terms rebate and bonus confused me a little in the doc. I had it in my head that bonus products were given if you reached a threshold for a product.\
+I believe now that the AC explains to give a rebate to the customer IF they reached a threshold for a product AND they have those rebatable items in their cart.
+
+EXAMPLE.
+A user has the following in their cart:
+1x Status Page
+3x Basic Check
+
+They would receive a Basic Check for free because they have added a Status Page product to their cart.\
+They would then pay for the Status Page product and only 2 of the Basic Check products with the third Basic Check give as a rebate bonus. 
+
 
