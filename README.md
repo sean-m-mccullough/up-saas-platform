@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# UP! a SaaS Platform
+A fictitious company “UP!” offers three SaaS product types on their website:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Acceptance Criteria
+1. [x] Users can select/input any number of Basic Checks, Advanced Checks, and Status Pages.
+2. Users see:
+  * [x] The total price
+  * [x] The total number of each product, including automatically rebated bonus products
+  * [x] Any bonuses they are receiving from rebates (your choice of presentation)
 
-Currently, two official plugins are available:
+### How to run
+I used Vite to create this project. The cmds are unchanged from the default.\
+DEV - To spin up a developer instance on your local, run `npm i && npm run dev` [http://localhost:5173/](http://localhost:5173/)\
+PROD - To create a production build and spin that up, run `npm i` (if you haven't already) then `npm run build && npm run preview` [http://localhost:4173/](http://localhost:4173/)\
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I also deployed the app to Netlify if you don't want to install and run it locally
+[https://keen-flan-90e35b.netlify.app/](https://keen-flan-90e35b.netlify.app/)
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Time Breakdown
+This time breakdown is cummlative. 
+I've found I work best using a Pomodoro timing around 30 minutes upto 1hr then break. In this case my break was working through my Full Stack Python course on Coursera :) (probably not the best break)
 
-## Expanding the ESLint configuration
+### 1hr 
+* reviewed doc and created simple wireframe
+* setup github project (main & feature/product-type) pushed to remote. 
+* installed Vite and Redux Toolkit
+* create redux store and product slice
+* create product feature and productTile component
+* created shells for cart & header features
+* some house keeping items
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2hr
+* created cart slice
+* created cartItem component
+* created rebates
+* built out cart feature
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 35 mins
+* added styling using MUI
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
