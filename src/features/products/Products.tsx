@@ -15,7 +15,7 @@ function Products() {
     
     return (
         <Box sx={{ padding: 2, border: '1px solid #ccc', borderRadius: 2, width: '100%' }}>
-            <Typography variant="h4" component="h2" gutterBottom>
+            <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'left', paddingBottom: 3 }}>
                 Products
             </Typography>
             <Grid container spacing={2}>

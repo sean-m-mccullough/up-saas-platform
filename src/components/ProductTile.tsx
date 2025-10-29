@@ -15,12 +15,23 @@ function ProductTile({
     }
     
     return (
-        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <CardContent sx={{ flexGrow: 1 }}>
+        <Card sx={{ 
+            height: '100%', 
+            display: 'flex', 
+            flexDirection: 'column',
+            minHeight: '400px'
+        }}>
+            <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <Typography variant="h5" component="h3" gutterBottom>
                     {title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
+                <Typography 
+                    variant="body2" 
+                    color="text.secondary"
+                    mt={4}
+                    mb={2}
+                    sx={{ flexGrow: 1 }}
+                >
                     {description}
                 </Typography>
                 <Typography variant="h6" color="primary">

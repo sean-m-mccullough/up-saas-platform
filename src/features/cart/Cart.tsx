@@ -23,12 +23,12 @@ function Cart() {
 
     return (
         <Box sx={{ padding: 2, border: '1px solid #ccc', borderRadius: 2, width: '100%' }}>
-            <Typography variant="h4" component="h2" gutterBottom>
+            <Typography variant="h4" component="h2" gutterBottom sx={{ paddingBottom: 3 }}>
                 Cart
             </Typography>
             <div>
                 {itemsArray.length === 0 ? (
-                    <p>Your cart is empty.</p>
+                    <Typography mb={2}>Your cart is empty.</Typography>
                 ) : (
                     itemsArray.map((item: CartLineItem) => (
                         <div key={item.productId}>
@@ -39,23 +39,52 @@ function Cart() {
             </div>
 
             {(freeAdvancedChecks > 0 || freeStatusPages > 0 || freeBasicChecks > 0) && (
-                <div className="rebates-section">
-                    <h3>Rebates</h3>
+                <Box sx={{ 
+                    backgroundColor: 'grey.50', 
+                    borderRadius: 1, 
+                    p: 2, 
+                    mt: 2,
+                    mb: 3,
+                    border: 1,
+                    borderColor: 'grey.200'
+                }}>
+                    <Typography variant="h6" component="h3" gutterBottom color="text.primary">
+                        Rebates
+                    </Typography>
                     {freeAdvancedChecks > 0 && (
-                        <p>+ {freeAdvancedChecks} Advanced Check(s) (free)</p>
+                        <Typography variant="body2" color="success.main" sx={{ mb: 0.5 }}>
+                            + {freeAdvancedChecks} Advanced Check(s) (free)
+                        </Typography>
                     )}
                     {freeStatusPages > 0 && (
-                        <p>+ {freeStatusPages} Status Page(s) (free)</p>
+                        <Typography variant="body2" color="success.main" sx={{ mb: 0.5 }}>
+                            + {freeStatusPages} Status Page(s) (free)
+                        </Typography>
                     )}
                     {freeBasicChecks > 0 && (
-                        <p>+ {freeBasicChecks} Basic Check(s) (free)</p>
+                        <Typography variant="body2" color="success.main">
+                            + {freeBasicChecks} Basic Check(s) (free)
+                        </Typography>
                     )}
-                </div>
+                </Box>
             )}
 
-            <div>
-                <h3>Cart Total: ${total.toFixed(2)}</h3>
-            </div>
+            {
+                itemsArray.length !== 0 && (
+                    <Box sx={{ 
+                        backgroundColor: 'primary.light', 
+                        borderRadius: 1, 
+                        p: 2, 
+                        mt: 2,
+                        border: 1,
+                        borderColor: 'primary.main'
+                    }}>
+                        <Typography variant="h5" component="h3" color="primary.contrastText" sx={{ fontWeight: 'bold' }}>
+                            Cart Total: ${total.toFixed(2)}
+                        </Typography>
+                    </Box>
+                )
+            }
         </Box>);
 }
 
