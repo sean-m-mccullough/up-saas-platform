@@ -1,3 +1,6 @@
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 import { useAppSelector } from "../../app/hooks";
 
 import { type CartLineItem } from "./cartSlice";
@@ -19,8 +22,10 @@ function Cart() {
     }, 0);
 
     return (
-        <div>
-            <h2>Cart</h2>
+        <Box sx={{ padding: 2, border: '1px solid #ccc', borderRadius: 2, width: '100%' }}>
+            <Typography variant="h4" component="h2" gutterBottom>
+                Cart
+            </Typography>
             <div>
                 {itemsArray.length === 0 ? (
                     <p>Your cart is empty.</p>
@@ -51,7 +56,7 @@ function Cart() {
             <div>
                 <h3>Cart Total: ${total.toFixed(2)}</h3>
             </div>
-        </div>);
+        </Box>);
 }
 
 export default Cart;

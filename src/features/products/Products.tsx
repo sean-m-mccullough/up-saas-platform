@@ -1,3 +1,7 @@
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+
 import { type RootState } from "../../app/store";
 import { useAppSelector } from "../../app/hooks";
 
@@ -10,20 +14,23 @@ function Products() {
     const products = useAppSelector((state: RootState) => state.products) as Product[];
     
     return (
-        <div>
-            <h2>Products</h2>
-            <ul>
+        <Box sx={{ padding: 2, border: '1px solid #ccc', borderRadius: 2, width: '100%' }}>
+            <Typography variant="h4" component="h2" gutterBottom>
+                Products
+            </Typography>
+            <Grid container spacing={2}>
                 {products.map(({ id, title, description, cost }) => (
-                    <ProductTile
-                        key={id}
-                        id={id}
-                        title={title}
-                        description={description}
-                        cost={cost}
-                    />
+                    <Grid size={{ xs: 12, sm: 4, md: 4, lg: 4 }} key={id}>
+                        <ProductTile
+                            id={id}
+                            title={title}
+                            description={description}
+                            cost={cost}
+                        />
+                    </Grid>
                 ))}
-            </ul>
-        </div>
+            </Grid>
+        </Box>
     );
 }
 
